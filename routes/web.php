@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+// Payment
+Route::post('/create-order', [PaymentController::class, 'createOrder']);
+Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
